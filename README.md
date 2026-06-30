@@ -22,6 +22,18 @@ It can be run as a **CLI tool** or as a **REST API**.
 
 ---
 
+## Libraries Used
+
+This project was built using lightweight, enterprise-standard libraries to ensure maintainability and performance without bloating the codebase:
+
+- **[Express.js](https://expressjs.com/)** — Used to build the REST API endpoint (`src/server.js`), providing a robust and scalable way to handle HTTP POST requests and JSON payloads.
+- **[Lodash](https://lodash.com/)** — A powerful utility library used heavily in the Merge Engine (`src/engine/merge.js`) for deep object retrieval (`_.get`) and array deduplication (`_.uniq`), ensuring clean data manipulation.
+- **[libphonenumber-js](https://gitlab.com/catamphetamine/libphonenumber-js)** — A precise telecom parsing library used in `src/normalizers/phone.js` to mathematically convert messy, unstructured phone strings into globally standardized `E.164` formats.
+- **[Jest](https://jestjs.io/)** — The industry-standard testing framework used to build our 65-test suite, ensuring absolute reliability of all extraction, normalization, and merging logic.
+- **Native Fetch API** — Used natively (Node 18+) to make asynchronous requests to the GitHub API without needing external HTTP clients like Axios.
+
+---
+
 ## Project Structure
 
 ```
