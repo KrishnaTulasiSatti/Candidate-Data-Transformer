@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --testPathPattern=tests/"
+    "test": "jest --testPathPattern=tests/",
+    "start": "node src/server.js"
   },
   "jest": {
     "testMatch": ["**/tests/**/*.test.js"],
@@ -16,6 +17,7 @@
   "dependencies": {
     "jest": "^29.0.0",
     "libphonenumber-js": "^1.13.7",
-    "lodash": "^4.18.1"
+    "lodash": "^4.18.1",
+    "express": "^4.18.2"
   }
 }

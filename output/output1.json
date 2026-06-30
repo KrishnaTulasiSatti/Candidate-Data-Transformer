@@ -1,0 +1,207 @@
+[
+  {
+    "full_name": "Krishna Tulasi Satti",
+    "primary_email": "krishnatulasi0302@gmail.com",
+    "primary_phone": "+918790369062",
+    "location": {
+      "city": "Ramavaram",
+      "region": "AndhraPradesh",
+      "country": "IN"
+    },
+    "links": {
+      "github": "https://github.com/KrishnaTulasiSatti"
+    },
+    "headline": "Passionate Full Stack Developer with strong foundations in Data Structures and Algorithms. Experienced in building scalable event-driven systems and cross-platform applications.",
+    "years_experience": 2.4,
+    "skills": [
+      {
+        "name": "React Native",
+        "confidence": 0.36,
+        "sources": [
+          "ats_json"
+        ]
+      },
+      {
+        "name": "Docker",
+        "confidence": 0.36,
+        "sources": [
+          "ats_json"
+        ]
+      },
+      {
+        "name": "Apache Kafka",
+        "confidence": 0.36,
+        "sources": [
+          "ats_json"
+        ]
+      },
+      {
+        "name": "Data Structures",
+        "confidence": 0.36,
+        "sources": [
+          "ats_json"
+        ]
+      },
+      {
+        "name": "Algorithms",
+        "confidence": 0.36,
+        "sources": [
+          "ats_json"
+        ]
+      },
+      {
+        "name": "C++",
+        "confidence": 0.85,
+        "sources": [
+          "ats_json",
+          "github_api"
+        ]
+      },
+      {
+        "name": "Python",
+        "confidence": 0.85,
+        "sources": [
+          "ats_json",
+          "github_api"
+        ]
+      },
+      {
+        "name": "Full Stack Development",
+        "confidence": 0.36,
+        "sources": [
+          "ats_json"
+        ]
+      },
+      {
+        "name": "Jupyter Notebook",
+        "confidence": 0.85,
+        "sources": [
+          "github_api"
+        ]
+      },
+      {
+        "name": "C",
+        "confidence": 0.85,
+        "sources": [
+          "github_api"
+        ]
+      },
+      {
+        "name": "JavaScript",
+        "confidence": 0.85,
+        "sources": [
+          "github_api"
+        ]
+      },
+      {
+        "name": "Java",
+        "confidence": 0.85,
+        "sources": [
+          "github_api"
+        ]
+      },
+      {
+        "name": "HTML",
+        "confidence": 0.85,
+        "sources": [
+          "github_api"
+        ]
+      },
+      {
+        "name": "Git",
+        "confidence": 0.85,
+        "sources": [
+          "github_api"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "company": "Codemind Technologies",
+        "title": "Full Stack Developer Intern",
+        "start": "Jan 2024",
+        "end": "Jun 2024",
+        "summary": "Built full-stack web applications using React and Node.js. Developed codemind-c, codemind-cpp, codemind-java, codemind-python course platforms."
+      },
+      {
+        "company": "Freelance / Self-Employed",
+        "title": "Software Developer",
+        "start": "Jul 2024",
+        "end": "Present",
+        "summary": "Built multi-tenant SaaS platform, Event-Driven Order Processing System with Apache Kafka, Financial Ledger API with Double-Entry Bookkeeping, LLM Prompt Router, and an AI Portfolio site."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Aditya Engineering College",
+        "degree": "B.Tech",
+        "field": "Computer Science",
+        "end_year": 2027
+      }
+    ],
+    "overall_confidence": 0.67,
+    "provenance": [
+      {
+        "field": "emails",
+        "source": "ats_json",
+        "method": "extract_and_merge"
+      },
+      {
+        "field": "phones",
+        "source": "ats_json",
+        "method": "extract_and_merge"
+      },
+      {
+        "field": "skills",
+        "source": "ats_json",
+        "method": "extract_and_merge"
+      },
+      {
+        "field": "experience",
+        "source": "ats_json",
+        "method": "extract_and_merge"
+      },
+      {
+        "field": "education",
+        "source": "ats_json",
+        "method": "extract_and_merge"
+      },
+      {
+        "field": "full_name",
+        "source": "ats_json",
+        "method": "highest_confidence_wins"
+      },
+      {
+        "field": "location",
+        "source": "ats_json",
+        "method": "highest_confidence_wins"
+      },
+      {
+        "field": "headline",
+        "source": "ats_json",
+        "method": "highest_confidence_wins"
+      },
+      {
+        "field": "repos",
+        "source": "github_api",
+        "method": "extract_and_merge"
+      },
+      {
+        "field": "skills",
+        "source": "github_api",
+        "method": "extract_and_merge"
+      },
+      {
+        "field": "links.github",
+        "source": "github_api",
+        "method": "extract_and_merge"
+      },
+      {
+        "field": "years_experience",
+        "source": "computed",
+        "method": "date_range_sum"
+      }
+    ],
+    "candidate_id": "candidate_01"
+  }
+]
