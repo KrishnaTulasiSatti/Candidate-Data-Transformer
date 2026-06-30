@@ -16,8 +16,7 @@ function normalizeEmail(email, regexStr) {
   
  
   if (regexStr) {
-  
-    if (!new RegExp(regexStr).test(cleaned)) {
+    if (!new RegExp(regexStr, 'i').test(cleaned)) {
       return null;
     }
   }
