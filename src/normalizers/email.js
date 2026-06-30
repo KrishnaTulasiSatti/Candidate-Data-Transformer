@@ -6,11 +6,25 @@
  *   - validates against a regex (case‑insensitive)
  * Returns null if the email does not match.
  */
-function normalizeEmail(raw, regexStr) {
-  if (!raw) return null;
-  const trimmed = raw.trim().toLowerCase();
-  const regex = new RegExp(regexStr, 'i');
-  return regex.test(trimmed) ? trimmed : null;
+// Define a function that cleans up email addresses
+function normalizeEmail(email, regexStr) {
+ 
+  if (!email) return null;
+  
+
+  const cleaned = String(email).trim().toLowerCase();
+  
+ 
+  if (regexStr) {
+  
+    if (!new RegExp(regexStr).test(cleaned)) {
+      return null;
+    }
+  }
+  
+
+  return cleaned;
 }
+
 
 module.exports = { normalizeEmail };
