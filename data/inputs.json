@@ -1,0 +1,15 @@
+[
+  {
+    "id": "candidate_01",
+    "sources": [
+      {
+        "type": "ats_json",
+        "path": "data/mock_ats.json"
+      },
+      {
+        "type": "github_api",
+        "url": "https://api.github.com/users/KrishnaTulasiSatti"
+      }
+    ]
+  }
+]

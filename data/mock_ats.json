@@ -1,0 +1,47 @@
+{
+  "id": "cand_krishna_01",
+  "firstName": "Krishna Tulasi",
+  "lastName": "Satti",
+  "contact": {
+    "emailList": [
+      "krishnatulasi0302@gmail.com"
+    ],
+    "phoneNumber": "+91 8790369062"
+  },
+  "address": "Ramavaram, AndhraPradesh, India",
+  "workHistory": [
+    {
+      "employer": "Codemind Technologies",
+      "jobTitle": "Full Stack Developer Intern",
+      "startDate": "Jan 2024",
+      "endDate": "Jun 2024",
+      "description": "Built full-stack web applications using React and Node.js. Developed codemind-c, codemind-cpp, codemind-java, codemind-python course platforms."
+    },
+    {
+      "employer": "Freelance / Self-Employed",
+      "jobTitle": "Software Developer",
+      "startDate": "Jul 2024",
+      "endDate": "Present",
+      "description": "Built multi-tenant SaaS platform, Event-Driven Order Processing System with Apache Kafka, Financial Ledger API with Double-Entry Bookkeeping, LLM Prompt Router, and an AI Portfolio site."
+    }
+  ],
+  "tagList": [
+    "React Native",
+    "Docker",
+    "Apache Kafka",
+    "Data Structures",
+    "Algorithms",
+    "C++",
+    "Python",
+    "Full Stack Development"
+  ],
+  "summary": "Passionate Full Stack Developer with strong foundations in Data Structures and Algorithms. Experienced in building scalable event-driven systems and cross-platform applications.",
+  "schooling": [
+    {
+      "school": "Aditya Engineering College",
+      "degree": "B.Tech",
+      "major": "Computer Science",
+      "gradYear": 2027
+    }
+  ]
+}
