@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { extractATS } = require('./extractors/ats');
 const { extractGithub } = require('./extractors/github');
+const { assertSameCandidate } = require('./engine/match');
 const { mergeProfiles } = require('./engine/merge');
 const { applyProjection } = require('./engine/project');
 
@@ -24,6 +25,14 @@ async function processCandidate(candidate, config) {
     
     if (profile) {
       extracted.push({ source: source.type, profile });
+    }
+  }
+
+  if (extracted.length > 1) {
+    const anchor = extracted[0].profile;
+
+    for (let i = 1; i < extracted.length; i++) {
+      assertSameCandidate(anchor, extracted[i].profile, config);
     }
   }
   
