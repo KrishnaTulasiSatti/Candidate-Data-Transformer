@@ -1,6 +1,8 @@
 # Multi-Source Candidate Data Transformer
 
-A Node.js pipeline that ingests candidate data from multiple heterogeneous sources (ATS JSON + GitHub API), normalizes it, merges it into a single canonical record, and outputs schema-valid JSON with provenance and confidence metadata.
+A Node.js pipeline that ingests candidate data from multiple heterogeneous sources (ATS JSON + GitHub API), normalizes it, merges it into a single canonical record, and outputs schema-valid JSON with provenance and confidence metadata. 
+
+It can be run as a **CLI tool** or as a **REST API**.
 
 ---
 
@@ -13,8 +15,10 @@ A Node.js pipeline that ingests candidate data from multiple heterogeneous sourc
 - **Merge strategies** — `highest_confidence_wins` for scalar fields; `extract_and_merge` (dedup) for arrays
 - **Provenance tracking** — Every field in the output records its source and merge method
 - **Graceful degradation** — Missing or failing sources are skipped; required-field violations surface as errors
+- **High-Performance Scaling** — Processes thousands of candidates in parallel using asynchronous Promise mapping.
+- **REST API Endpoint** — Includes an Express server to process requests dynamically via HTTP POST.
 - **CLI interface** — Simple flag-based invocation
-- **54+ unit + integration tests** via Jest
+- **65 unit + integration tests** via Jest
 
 ---
 
@@ -24,6 +28,7 @@ A Node.js pipeline that ingests candidate data from multiple heterogeneous sourc
 candidate-data-transformer/
 ├── data/
 │   ├── config.json        # Schema, confidence weights, skill aliases, email regex
+│   ├── custom_config.json # Alternative custom projection schema
 │   ├── inputs.json        # Batch input: list of candidates with source pointers
 │   └── mock_ats.json      # Sample ATS payload
 ├── src/
@@ -41,17 +46,12 @@ candidate-data-transformer/
 │   │   └── project.js     # Applies config field schema to canonical profile
 │   ├── utils/
 │   │   └── canonical.js   # Empty canonical profile factory
+│   ├── pipeline.js        # Core pipeline logic (shared by CLI and API)
+│   ├── server.js          # Express HTTP API server
 │   └── index.js           # CLI entry point
 ├── tests/
-│   ├── normalizers/
-│   │   ├── name.test.js
-│   │   ├── email.test.js
-│   │   ├── phone.test.js
-│   │   ├── date.test.js
-│   │   └── location.test.js
-│   └── engine/
-│       ├── merge.test.js
-│       └── gold_profile.test.js
+│   ├── normalizers/       # 5 normalizer test suites
+│   └── engine/            # 2 merge & projection test suites
 └── output/
     └── final_candidate.json  # Pipeline output
 ```
@@ -73,7 +73,32 @@ npm install
 
 ---
 
-## Running the Pipeline
+## 1. Running via HTTP API (Recommended)
+
+Start the server:
+
+```bash
+npm start
+# 🚀 Server listening on http://localhost:3000
+```
+
+Send a POST request (using PowerShell):
+
+```powershell
+curl.exe -X POST "http://localhost:3000/process" `
+  -H "Content-Type: application/json" `
+  -H "x-api-key: my-secret-token" `
+  -d @data/inputs.json
+```
+
+**Options:**
+- `?config=path/to/config.json`: Override the default configuration schema.
+- `?out=path/to/output.json`: Override the output destination. By default, files are written to the `output/` directory and intelligently named based on the config used (e.g. `output1.json` or `custom_config_output1.json`).
+- `x-api-key`: Simple token auth. Defaults to `my-secret-token`. Can be overridden by setting the `API_TOKEN` environment variable before starting the server.
+
+---
+
+## 2. Running via CLI
 
 ```bash
 node src/index.js --batch data/inputs.json --config data/config.json --out output/final_candidate.json
@@ -84,20 +109,6 @@ node src/index.js --batch data/inputs.json --config data/config.json --out outpu
 | `--batch` | Path to the batch inputs JSON (list of candidates) |
 | `--config` | Path to the config JSON (schema, weights, aliases) |
 | `--out` | Output file path for the merged profiles |
-
-### Sample `inputs.json` entry
-
-```json
-[
-  {
-    "id": "candidate_01",
-    "sources": [
-      { "type": "ats_json", "path": "data/mock_ats.json" },
-      { "type": "github_api", "url": "https://api.github.com/users/<username>" }
-    ]
-  }
-]
-```
 
 ---
 
@@ -110,8 +121,8 @@ npm test
 All tests live in the `tests/` folder and are picked up automatically by Jest.
 
 ```
-Test Suites: 6 passed, 6 total
-Tests:       54 passed, 54 total
+Test Suites: 7 passed, 7 total
+Tests:       65 passed, 65 total
 ```
 
 ---
@@ -131,7 +142,7 @@ Tests:       54 passed, 54 total
 
 ---
 
-## Output Schema
+## Output Schema Example
 
 ```json
 {
